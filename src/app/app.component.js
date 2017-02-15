@@ -21,6 +21,7 @@ var AppComponent = (function () {
         //name = 'Windstorm';
         this.hero = {
             id: 1,
+            title: "Tour of Heroes",
             name: 'Windstorm The Saviour'
         };
     }
@@ -29,7 +30,7 @@ var AppComponent = (function () {
             //with an input, one way binding, means the value change does not reflect anywhere else
             selector: 'my-app',
             // the view, data will be shown here
-            template: "\n    <h1>{{title}}</h1>\n    <h2>{{hero.name}} details!</h2>\n    <div><label>id: </label>{{hero.id}}</div>\n    <div>\n      <label>name: </label>\n      <input value=\"{{hero.name}}\" placeholder=\"name\">\n    </div>\n    " }), 
+            template: "\n    <h1>{{hero.title}}</h1>\n    <h2>{{hero.name}} details!</h2>\n    <div><label>id: </label>{{hero.id}}</div>\n    <div>\n      <label>name: </label>\n      <!--update the template to use the ngModel built-in directive for two-way binding.-->\n      <input [(ngModel)]=\"hero.name\" placeholder=\"name\">\n    </div>\n    " }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
