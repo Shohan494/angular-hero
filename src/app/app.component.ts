@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-
+//importing the hero.ts file
+import { Hero } from './hero';
 //single hero class with properties
-export class Hero {
-  id: number;
-  name: string;
-}
+//taken out, above it has been imported
 
 // declaring the array of some heroes
 const HEROES: Hero[] = [
@@ -26,23 +24,16 @@ const HEROES: Hero[] = [
     <h1>{{title}}</h1>
     <h2>My Heroes</h2>
     <ul class="heroes">
-    <!-- looping through with ("*ngFor") and "onclick event" added on "hero"-->
-    <!-- a class will be added when a single hero is selected on clicking -->
       <li *ngFor="let hero of heroes"
         [class.selected]="hero === selectedHero"
         (click)="onSelect(hero)">
         <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-    <!-- selected hero template part -->
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-      </div>
-    </div>
+    <!-- from imported 'hero' and angular way to use template from other file
+    the HeroDetailComponent should receive the hero from the AppComponent and
+    display that hero's detail beneath the list -->
+    <my-hero-detail [hero]="selectedHero"></my-hero-detail>
   `,
   //style css section
   styles: [`
