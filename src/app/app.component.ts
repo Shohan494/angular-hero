@@ -11,7 +11,7 @@ export class Hero {
   selector: 'my-app',
   // the view, data will be shown here
   template:`
-    <h1>{{hero.title}}</h1>
+    <h1>{{title}}</h1>
     <h2>{{hero.name}} details!</h2>
     <div><label>id: </label>{{hero.id}}</div>
     <div>
@@ -23,7 +23,8 @@ export class Hero {
 
 // the class of app component, data will be passsed from here
 export class AppComponent{
-  //title = "Tour Of Heroes";
+  //can also be used from here
+  title = "Tour Of Heroes";
   //name = 'Windstorm';
 
   hero: Hero = {
