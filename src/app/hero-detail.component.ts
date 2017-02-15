@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { Hero } from './hero';
 
 @Component({
+  //this has been used in "app.component.ts" template
   selector: 'my-hero-detail',
   template: `
     <div *ngIf="hero">
@@ -17,7 +18,6 @@ import { Hero } from './hero';
 })
 
 export class HeroDetailComponent {
-  //taking an input
   @Input()
   hero: Hero;
 }

@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+//used this for importing hero array data from "mock-heroes" file
 var mock_heroes_1 = require('./mock-heroes');
 var HeroService = (function () {
     function HeroService() {
@@ -16,8 +17,7 @@ var HeroService = (function () {
     /*
     getHeroes(): Hero[] {
       return HEROES;
-    }
-    */
+    } */
     //used promise
     HeroService.prototype.getHeroes = function () {
         return Promise.resolve(mock_heroes_1.HEROES);
