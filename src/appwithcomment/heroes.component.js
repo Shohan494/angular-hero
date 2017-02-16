@@ -9,8 +9,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
+//single hero class with properties
 var hero_service_1 = require("./hero.service");
+var router_1 = require("@angular/router");
 var HeroesComponent = (function () {
     function HeroesComponent(router, heroService) {
         this.router = router;
@@ -42,9 +43,4 @@ HeroesComponent = __decorate([
         hero_service_1.HeroService])
 ], HeroesComponent);
 exports.HeroesComponent = HeroesComponent;
-/*
-Copyright 2017 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/ 
 //# sourceMappingURL=heroes.component.js.map
