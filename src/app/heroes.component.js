@@ -8,43 +8,69 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var hero_service_1 = require("./hero.service");
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var hero_service_1 = require('./hero.service');
 var HeroesComponent = (function () {
-    function HeroesComponent(router, heroService) {
-        this.router = router;
+    //consructor's parameter that creates some private method/process
+    function HeroesComponent(heroService, router) {
         this.heroService = heroService;
+        this.router = router;
     }
-    HeroesComponent.prototype.getHeroes = function () {
-        var _this = this;
-        this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
-    };
+    //ngOnInit method always initializes when project starts
+    //this time it calls the "getHeroes()" method right below
     HeroesComponent.prototype.ngOnInit = function () {
         this.getHeroes();
     };
-    HeroesComponent.prototype.onSelect = function (hero) {
-        this.selectedHero = hero;
+    //the method that has been called via ngOnInit above
+    //it calls the getHeroes method from "hero.service.ts" file
+    HeroesComponent.prototype.getHeroes = function () {
+        var _this = this;
+        this.heroService
+            .getHeroes()
+            .then(function (heroes) { return _this.heroes = heroes; });
     };
     HeroesComponent.prototype.gotoDetail = function () {
         this.router.navigate(['/detail', this.selectedHero.id]);
     };
+    HeroesComponent.prototype.onSelect = function (hero) {
+        this.selectedHero = hero;
+    };
+    //adding some hero method which calls the "hero.service.ts" file's method
+    HeroesComponent.prototype.add = function (name) {
+        var _this = this;
+        name = name.trim();
+        if (!name) {
+            return;
+        }
+        this.heroService.create(name)
+            .then(function (hero) {
+            _this.heroes.push(hero);
+            _this.selectedHero = null;
+        });
+    };
+    //deleting some hero method which calls the "hero.service.ts" file's method
+    HeroesComponent.prototype.delete = function (hero) {
+        var _this = this;
+        this.heroService
+            .delete(hero.id)
+            .then(function () {
+            _this.heroes = _this.heroes.filter(function (h) { return h !== hero; });
+            if (_this.selectedHero === hero) {
+                _this.selectedHero = null;
+            }
+        });
+    };
+    HeroesComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'my-heroes',
+            templateUrl: './heroes.component.html',
+            styleUrls: ['./heroes.component.css']
+        }), 
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.Router])
+    ], HeroesComponent);
     return HeroesComponent;
 }());
-HeroesComponent = __decorate([
-    core_1.Component({
-        moduleId: module.id,
-        selector: 'my-heroes',
-        templateUrl: './heroes.component.html',
-        styleUrls: ['./heroes.component.css']
-    }),
-    __metadata("design:paramtypes", [router_1.Router,
-        hero_service_1.HeroService])
-], HeroesComponent);
 exports.HeroesComponent = HeroesComponent;
-/*
-Copyright 2017 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/ 
 //# sourceMappingURL=heroes.component.js.map
